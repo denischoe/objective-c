@@ -9,18 +9,18 @@
 
 @end
 
-@implement XYPoint
+@implementation XYPoint
 {
 	int xPoint;
 	int yPoint;
 }
 -(void) setX: (int) x
 {
-	xPoint = x;	
+	self->xPoint = x;	
 }
 -(void) setY: (int) y
 {
-	yPoint = y;	
+	(*self).yPoint = y;	
 }
 -(int) xPoint
 {
@@ -32,4 +32,18 @@
 }
 
 @end
+int main()
+{
+	@autoreleasepool{
+	XYPoint *ob = [[XYPoint alloc] init];
+	[ob setX : 6];
+	[ob setY : 1];
+	NSLog(@" ob -> xPoint : %d",[ob xPoint] );
+	
+	NSLog(@" ob -> yPoint : %d",[ob yPoint] );
+	}		
 
+
+
+	return 0;
+}
